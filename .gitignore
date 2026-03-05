@@ -1,0 +1,9 @@
+# Visit counter data
+data/visits.json
+
+# macOS junk
+.DS_Store
+._*
+
+# Optional: logs
+*.log

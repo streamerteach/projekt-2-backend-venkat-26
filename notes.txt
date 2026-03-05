@@ -1,0 +1,3 @@
+https://www.w3schools.com/php/php_superglobals_server.asp
+Manual 
+Manual https://www.php.net

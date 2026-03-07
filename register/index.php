@@ -1,5 +1,8 @@
 <?php
-if (!defined('APP_STARTED')) {
+include __DIR__ . "/../inc/model_register.php";
+include __DIR__ . "/../inc/model_genders.php";
+
+/*if (!defined('APP_STARTED')) {
     exit;
 }
 
@@ -53,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         mail($email,"You have registered to use ReUse Market",$msg);
     }
-}
+}*/
 ?>
 
 <main class="register-page">
@@ -79,14 +82,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <label for="username">Username</label>
           <input type="text" name="username" placeholder="Enter your username" required>
         </div>
+
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" name="email" placeholder="Enter your email" required>
         </div>
+
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" name="password" placeholder="Enter your password" required>
         </div>
+
+        <div class="form-group">
+          <label for="realname">Real name</label>
+          <input type="text" name="realname" placeholder="Enter your real name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" name="city" placeholder="Enter your city" required>
+        </div>
+
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <input type="text" name="bio" placeholder="Enter a short bio" required>
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select name="gender">
+            <option value="" disabled selected hidden>Please select</option>
+            
+            <?php foreach ($genders as $gender): ?>
+              <option value="<?= htmlspecialchars($gender['id']) ?>">
+                <?= htmlspecialchars($gender['name']) ?>
+              </option>
+            <?php endforeach; ?>
+      
+          </select>
+        </div>
+
         <button type="submit" class="btn-register">Register</button>
       </form>
       <div class="extra-links">

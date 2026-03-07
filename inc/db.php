@@ -1,7 +1,14 @@
 <?php 
 //database config
+$servername = "localhost";
 
 include 'secret.php';
+
+// secret.php looks like this (shown password, dbname, and username values below are just examples):
+// <?php 
+// $password = "sup3rh3mlis"; 
+// $dbname = "dbname";
+// $username = "username";
 
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

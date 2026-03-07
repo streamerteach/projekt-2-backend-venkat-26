@@ -7,3 +7,5 @@ data/visits.json
 
 # Optional: logs
 *.log
+
+secret.php

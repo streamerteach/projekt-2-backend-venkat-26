@@ -1,6 +1,14 @@
 <?php 
 //database config
 
+include 'secret.php';
+
+$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+print("Connected to database");
+
+
+/*
 //Detect if running locally or on arcada server
 if(strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
   $host = 'localhost';
@@ -33,5 +41,5 @@ $charset = 'utf8mb4';
   $pdo = new PDO($dsn, $user, $pass, $options);
  } catch(PDOException $e) {
   die("Database connection failed :" . $e->getMessage());
- }
+ }*/
 ?>

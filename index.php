@@ -18,7 +18,8 @@ $routes = [
   'register' => 'register/index.php',
   'products' => 'products/index.php',
   'profile' => 'profile/index.php',
-  'report' => 'report/index.php'
+  'report' => 'report/index.php',
+  'new-listing' => 'new-listing/index.php'
 ];
 
 $file = $routes[$page] ?? $routes['home'];

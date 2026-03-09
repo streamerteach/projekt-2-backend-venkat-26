@@ -1,2 +1,8 @@
-order deny,allow
-deny from all
+# Disable the file directory listing
+Options -Indexes
+
+# Block direct execution of scripts
+<FilesMatch "\.(php)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>

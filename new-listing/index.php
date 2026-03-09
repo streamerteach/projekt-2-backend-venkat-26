@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . "/../inc/model_listing.php";
+include __DIR__ . "/../inc/model_new_listing.php";
 
 if (!defined('APP_STARTED')) {
     exit;
@@ -21,7 +21,7 @@ if (!defined('APP_STARTED')) {
     <?php if ($success): ?>
       <div class="alert success">
         <p>Listing created successfully! 🥳</p>
-        <p><a href="<?= BASE_URL ?>/index.php?page=login">Go to listing page</a></p>
+        <p><a href="<?= BASE_URL ?>/index.php?page=listing&id=<?= $listing_id ?>">Go to listing page</a></p>
       </div>
     <?php else: ?>
       <form action="<?= BASE_URL ?>/index.php?page=new-listing" method="POST" class="form" enctype="multipart/form-data">

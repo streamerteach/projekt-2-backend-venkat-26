@@ -1,6 +1,4 @@
 <?php
-    require_once __DIR__ . './../inc/config.php';
-    include __DIR__ . '/../handy_methods.php';
     include 'profile_img_logic.php';
     include 'comment_logic.php';
 

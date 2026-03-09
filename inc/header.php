@@ -30,20 +30,14 @@
                   >Products</a
                 >
               </li>
-              <li>
-                <a
-                  href="<?php echo BASE_URL; ?>/index.php?page=login" >Login</a
-                >
-              </li>
-              <li>
-                <a
-                  href="<?php echo BASE_URL; ?>/index.php?page=register"
-                  
-                  >Register</a
-                >
-              </li>
-              
-              <?php if (!empty($_SESSION['username'])) :?>
+              <?php if (!empty($_SESSION['user_id'])) :?>
+                <li>
+                  <a
+                    href="<?php echo BASE_URL; ?>/index.php?page=new-listing"
+                    
+                    >New Listing</a
+                  >
+                </li>
                 <li>
                   <a
                     href="<?php echo BASE_URL; ?>/index.php?page=profile"
@@ -51,7 +45,29 @@
                     >Profile</a
                   >
                 </li>
+              <?php endif; ?>              
+              <li>
+                <a
+                  href="<?php echo BASE_URL; ?>/index.php?page=login">
+                    <?php if (empty($_SESSION['user_id'])) :?>
+                      Login
+                    <?php else: ?>
+                      Logout  
+                    <?php endif; ?>  
+                  </a
+                >
+              </li>
+              <?php if (empty($_SESSION['user_id'])) :?>
+              <li>
+                <a
+                  href="<?php echo BASE_URL; ?>/index.php?page=register"
+                  
+                  >Register</a
+                >
+              </li>
               <?php endif; ?>
+              
+
 
               <li>
                 <a

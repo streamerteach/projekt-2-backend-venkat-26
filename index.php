@@ -19,7 +19,8 @@ $routes = [
   'products' => 'products/index.php',
   'profile' => 'profile/index.php',
   'report' => 'report/index.php',
-  'new-listing' => 'new-listing/index.php'
+  'new-listing' => 'new-listing/index.php',
+  'listing' => 'listing/index.php'
 ];
 
 $file = $routes[$page] ?? $routes['home'];

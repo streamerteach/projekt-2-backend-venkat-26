@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $price = sanitize_input($price);
 
         $sql = "INSERT INTO `listings` (`name`, `description`, `price`, `user_id_fk`, `date_added`, `img_path`) 
-                VALUES (:listing_name, :listing_description, :price, :user_id, CURRENT_DATE, :img_path)";
+                VALUES (:listing_name, :listing_description, :price, :user_id, CURRENT_TIMESTAMP, :img_path)";
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':listing_name', $name, PDO::PARAM_STR);

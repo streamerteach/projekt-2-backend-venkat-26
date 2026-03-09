@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-    //$_SESSION['user_id'] = 5; // TEMPORARY FOR TESTING - REMOVE WHEN LOGIN SYSTEM IS COMPLETE
+    $_SESSION['user_id'] = 5; // TEMPORARY FOR TESTING - REMOVE WHEN LOGIN SYSTEM IS COMPLETE
 }
 
 /* Auto-detect BASE_URL

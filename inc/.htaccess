@@ -1,2 +1,2 @@
-order deny,allow
-deny from all
+# Disable the file directory listing
+Options -Indexes

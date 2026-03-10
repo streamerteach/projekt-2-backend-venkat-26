@@ -43,14 +43,16 @@ $products = $_SESSION['products'];
 <h2>Available Products</h2>
  <div class="product-listing">
   <?php foreach ($listings as $listing): ?>
-    <div class="product-card">
+    
+      <div class="product-card"><a href="<?= BASE_URL ?>/index.php?page=listing&id=<?= $listing['id'] ?>">
       <!-- Product details can be added here -->
-       <img src="<?= BASE_URL ?>/images/<?= $listing['img_path'] ?>" 
-       alt="<?php echo htmlspecialchars($listing['name']); ?>">
-       <h3> <?php echo htmlspecialchars($listing['name']); ?> </h3>
-       <p><?php echo htmlspecialchars($listing['description']); ?> </p>
-       <p> Price: $<?php echo $listing['price']; ?> </p>
-    </div>
+        <img src="<?= BASE_URL ?>/images/<?= $listing['img_path'] ?>" 
+        alt="<?php echo htmlspecialchars($listing['name']); ?>">
+        <h3> <?php echo htmlspecialchars($listing['name']); ?> </h3>
+        <p><?php echo htmlspecialchars($listing['description']); ?> </p>
+        <p> Price: <?php echo $listing['price']; ?>€</p>
+      </a></div>
+    
   <?php endforeach; ?>
  </div>
 </main>

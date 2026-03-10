@@ -3,9 +3,14 @@
     $success = false;
 
     $stmt = $conn->prepare("
-    SELECT 
-        (SELECT 1 FROM users_interested WHERE user_id_fk = :user_id AND listing_id_fk = :listing_id) AS is_interested,
-        (SELECT COUNT(*) FROM users_interested WHERE listing_id_fk = :listing_id) AS total_interested
+        SELECT 
+            l.*, 
+            u.realname AS listing_seller,
+            (SELECT 1 FROM users_interested WHERE user_id_fk = :user_id AND listing_id_fk = l.id) AS is_interested,
+            (SELECT COUNT(*) FROM users_interested WHERE listing_id_fk = l.id) AS total_interested
+        FROM listings l
+        LEFT JOIN users u ON u.id = l.user_id_fk
+        WHERE l.id = :listing_id
     ");
 
     $stmt->execute([
@@ -13,10 +18,10 @@
         'listing_id' => $_GET['id']
     ]);
 
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $listingData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $isInterested = (bool)$result['is_interested'];
-    $totalInterested = $result['total_interested'];
+    $isInterested = (bool)$listingData['is_interested'];
+    $totalInterested = $listingData['total_interested'];
     
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

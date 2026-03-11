@@ -9,7 +9,7 @@
 
     $listings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    print_r($listings);
+    // print_r($listings);
 
  //Initialize products in session if not already set
  /*if(!isset($_SESSION['products'])){
@@ -35,10 +35,7 @@
   ];
  }*/
   
-
-$products = $_SESSION['products'];
 ?>
-
 <main class="product-page">
 <h2>Available Products</h2>
  <div class="product-listing">

@@ -67,7 +67,8 @@
                     if(!in_array($redirect, $allowed_pages)) {
                       $redirect = 'products' ;
                     }
-                    $redirect_url = BASE_URL . "/$redirect/index.php" ;
+                    $redirect_url = BASE_URL . "/index.php?page=$redirect";
+                    
                     header("Location: $redirect_url" );
                     exit;
                 } else {

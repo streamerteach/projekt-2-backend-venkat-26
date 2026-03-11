@@ -1,7 +1,6 @@
 <?php 
 //database config
 $servername = "localhost";
-
 include 'secret.php';
 
 // secret.php looks like this (shown password, dbname, and username values below are just examples):

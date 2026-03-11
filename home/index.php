@@ -70,7 +70,7 @@ if(!isset($cookieConsent) || $cookieConsent !== 'rejected'){
 <article class="message">
    <p>Thousands of listings coming soon!</p>
  </article>
-    </div>
+</div>
 
 <div class="page-section">
     <article class="message">
@@ -79,7 +79,7 @@ if(!isset($cookieConsent) || $cookieConsent !== 'rejected'){
       ?></p>
 
       <h2>Create time-limited listing:</h2><br>
-      <form method="POST">
+      <form method="POST" action="<?php echo BASE_URL;?>/index.php?page=home">
         <?php $now = date('Y-m-d\TH:i'); ?>
         <input type="datetime-local" name="delisting_date" min="<?php echo $now; ?>" required>
         <button type="submit">Create time-limited listing</button><br><br>
@@ -90,7 +90,7 @@ if(!isset($cookieConsent) || $cookieConsent !== 'rejected'){
 
 <!-- Cookie banner -->
 <?php if($show_cookie_banner) :?>
-<form method="post" class="cookie-banner">
+<form method="post" class="cookie-banner" action="<?php echo BASE_URL; ?>/index.php?page=home">
  <p>Vi använder endast funktionella kakor.</p>
  <button name="accept_cookies">Acceptera</button>
  <button name="reject_cookies">Avböj</button>
@@ -114,27 +114,22 @@ if (!empty($_REQUEST['delisting_date'])) {
   const display = document.getElementById("countdown");
   const delistingDate = <?php echo $delistingTimestamp; ?>;
 
-  const currentTime = Date.now();
-  if (delistingDate < currentTime) {
-    display.innerHTML = "Please enter a future date and time.";
-  }
-
-  else if (delistingDate > 0) {
-    const timerInterval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = delistingDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      if (distance < 0) {
-        clearInterval(timerInterval);
-        display.innerHTML = "LISTING HAS BEEN DELISTED";
-      } else {
-        display.innerHTML = `Time until delisting: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-      }
-    }, 1000);
+  if(delistingDate > 0){
+    const timeInterval = setInterval(() => {
+       const now = new Date().getTime();
+       const distance = delistingDate - now ;
+       if(distance < 0){
+        clearInterval(timeInterval) ;
+        display.innerHTML = 'Listing HAS BEEN DELISTED' ;
+       } else {
+        const days = Math.floor(distance/(1000*60*60*24));
+        const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60)) ;
+        const minutes = Math.floor((distance %(1000*60*60)) / (1000*60)) ;
+        const seconds = Math.floor((distance  % (1000*60)) / 1000) ;
+        display.innerHTML = `Time until delisting : ${days}d ${hours}h  ${minutes}m ${seconds}s` ;
+       }
+    },1000);
+  } else {
+display.innerHTML = "Please enter a future date and time.";
   }
 </script>

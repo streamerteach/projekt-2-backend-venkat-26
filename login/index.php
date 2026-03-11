@@ -1,7 +1,6 @@
 <?php
     if (! defined('APP_STARTED')) {exit;}
-
-    $errors  = [];
+     $errors  = [];
     $success = false;
 
     // CSRF token (optional)
@@ -10,7 +9,7 @@
     }
 
     //Hardcoded test account
-    if (! isset($_SESSION['users'])) {
+    if (!isset($_SESSION['users'])) {
     $_SESSION['users']   = [];
     $_SESSION['users'][] = [
         'username' => 'testuser',
@@ -33,14 +32,14 @@
     $csrf     = $_POST['csrf_token'] ?? '';
 
     // CSRF check
-    if (! hash_equals($_SESSION['csrf_token'], $csrf)) {
+    if (!hash_equals($_SESSION['csrf_token'], $csrf)) {
         $errors[] = 'Invalid form submission';
     }
 
     // Validation
     if ($email === '' || $password === '') {
         $errors[] = 'Both fields are required.';
-    } elseif (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = 'Invalid email address.';
     }
 

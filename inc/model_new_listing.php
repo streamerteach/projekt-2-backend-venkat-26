@@ -62,14 +62,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $price = sanitize_input($price);
 
         $sql = "INSERT INTO `listings` (`name`, `description`, `price`, `user_id_fk`, `date_added`, `img_path`) 
-                VALUES (:listing_name, :listing_description, :price, :user_id, CURRENT_DATE, :img_path)";
+                VALUES (:listing_name, :listing_description, :price, :user_id, CURRENT_TIMESTAMP, :img_path)";
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':listing_name', $name, PDO::PARAM_STR);
         $stmt->bindParam(':listing_description', $description, PDO::PARAM_STR);
         $stmt->bindParam(':price', $price, PDO::PARAM_STR);
         $stmt->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
-        $stmt->bindParam(':img_path', $target_file, PDO::PARAM_STR);
+        $stmt->bindParam(':img_path', $safeName, PDO::PARAM_STR);
 
         if ($stmt->execute()) {
             $success = true;

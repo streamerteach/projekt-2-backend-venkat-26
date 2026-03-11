@@ -3,8 +3,16 @@
     if (! defined('APP_STARTED')) {
     exit;
     }
+
+    $stmt = $conn->prepare("SELECT * FROM listings");
+    $stmt->execute();
+
+    $listings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    print_r($listings);
+
  //Initialize products in session if not already set
- if(!isset($_SESSION['products'])){
+ /*if(!isset($_SESSION['products'])){
   $_SESSION['products'] = [
     [
       'name' => 'Reusable Water Bottle',
@@ -25,7 +33,7 @@
       'image' => 'images/lamp.png'
   ]
   ];
- }
+ }*/
   
 
 $products = $_SESSION['products'];
@@ -34,15 +42,17 @@ $products = $_SESSION['products'];
 <main class="product-page">
 <h2>Available Products</h2>
  <div class="product-listing">
-  <?php foreach ($products as $product): ?>
-    <div class="product-card">
+  <?php foreach ($listings as $listing): ?>
+    
+      <div class="product-card"><a href="<?= BASE_URL ?>/index.php?page=listing&id=<?= $listing['id'] ?>">
       <!-- Product details can be added here -->
-       <img src="<?php echo BASE_URL . '/' . $product['image']; ?>" 
-       alt="<?php echo htmlspecialchars($product['name']); ?>">
-       <h3> <?php echo htmlspecialchars($product['name']); ?> </h3>
-       <p><?php echo htmlspecialchars($product['description']); ?> </p>
-       <p> Price: $<?php echo $product['price']; ?> </p>
-    </div>
+        <img src="<?= BASE_URL ?>/images/<?= $listing['img_path'] ?>" 
+        alt="<?php echo htmlspecialchars($listing['name']); ?>">
+        <h3> <?php echo htmlspecialchars($listing['name']); ?> </h3>
+        <p><?php echo htmlspecialchars($listing['description']); ?> </p>
+        <p> Price: <?php echo $listing['price']; ?>€</p>
+      </a></div>
+    
   <?php endforeach; ?>
  </div>
 </main>

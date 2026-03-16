@@ -450,7 +450,23 @@ ADMIN PAGE
 .admin-page {
   display: flex;
   flex-direction: column;
+}
 
+a.btn-blue {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  background-color: #2c5dff;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+a.btn-blue:hover {
+  background-color: #1641ce;
 }
 
 .user-field {

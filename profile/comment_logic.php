@@ -13,8 +13,12 @@ if (!empty($_POST['comment'])) {
 
     $combined_comments = $new_comment . $old_comments;
     
-    file_put_contents($filename, $combined_comments);
+    $result = file_put_contents($filename, $combined_comments);
+    if($result === false){
+      echo "Error: comments.txt is not writable.";
+    } else {
+      echo "Comment added to the top!";
+    }
     
-    echo "Comment added to the top!";
 }
 ?>

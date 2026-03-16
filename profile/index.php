@@ -20,7 +20,7 @@
      <div class="manage-card danger">
         <h3>Remove Profile</h3>
         <p>Delete your profile and related data.</p>
-         <a href="index.php?page=delete-profile" class="manage-btn delete-btn">Remove</a>
+         <a href="index.php?page=profile-remove" class="manage-btn delete-btn">Remove</a>
     </div>
   </div>
   

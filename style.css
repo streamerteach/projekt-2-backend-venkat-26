@@ -557,6 +557,7 @@ Footer
   font-size: 14px;
   cursor: pointer;
   transition: background 0.2s ease;
+  text-decoration: none ;
 }
 
 .manage-btn:hover{

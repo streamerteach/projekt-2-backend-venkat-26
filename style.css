@@ -507,3 +507,17 @@ Footer
   margin-bottom: 10px;
 }
 
+/* /Profile page manage css */
+.profileManage{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.manage-card {
+  flex: 1 1 250px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+}

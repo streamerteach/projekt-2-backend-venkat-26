@@ -10,7 +10,20 @@
 
  <main class="">
   <div class="page-section">
-  <h1>Profile</h1><br>
+  <h1>Profile Page</h1><br>
+  <div class="profileManage">
+    <div class="manage-card">
+        <h3>Update Profile</h3>
+        <p>Edit your profile details and image.</p>
+         <button class="manage-btn">Update</button>
+    </div>
+     <div class="manage-card danger">
+        <h3>Remove Profile</h3>
+        <p>Delete your profile and related data.</p>
+         <button class="manage-btn delete-btn">Remove</button>
+    </div>
+  </div>
+  
 
   <h2>Profile image:</h2>
     <form action="" method="post" enctype="multipart/form-data">

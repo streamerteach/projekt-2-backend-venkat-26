@@ -12,3 +12,13 @@ if (toggle && menu) {
     }
   });
 }
+
+//to hide and show profile manage tesxts
+function toggleText(id){
+  const element = document.getElementById(id);
+  if(element.style.display === "none" || element.style.display === ""){
+    element.style.display = "block";
+  } else {
+    element.style.display = "none";
+  }
+}

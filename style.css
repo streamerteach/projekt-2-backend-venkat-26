@@ -447,6 +447,12 @@ article.listing #listing-data #listing-interested p, article.listing #listing-da
 /* =========
 ADMIN PAGE
 ================ */
+.admin-page {
+  display: flex;
+  flex-direction: column;
+
+}
+
 .user-field {
   padding: 10px;
   text-decoration: none;
@@ -465,6 +471,50 @@ ADMIN PAGE
 #users-container {
   max-height: 700px;
   overflow-y:auto
+}
+
+.admin-container.delete-user {
+  margin-top: 25px;
+}
+
+.btn-delete {
+  width: 100%;
+  padding: 14px;
+  background-color: #ec1c1c;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+  background-color:#b61010;
+}
+
+.alert.error{
+  background-color: #ffe2e2;
+  color: #b61010;
+
+}
+
+.alert.error a{
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  align-items: center;
+  padding: 10px 20px;
+  margin-top: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  background-color: #22c55e;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+.alert.success a:hover{
+  background-color: #16a34a;
 }
 
 /* =========

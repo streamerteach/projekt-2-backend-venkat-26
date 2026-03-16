@@ -1,17 +1,24 @@
 <?php
-    include __DIR__ . "/../inc/model_genders.php";
-    include __DIR__ . "/../inc/model_roles.php";
+include __DIR__ . "/../inc/model_genders.php";
+include __DIR__ . "/../inc/model_roles.php";
 
-    $user_id = $_GET['id'];
-    $stmt = $conn->prepare("SELECT * FROM users WHERE id = $user_id");
-    $stmt->execute();
+$errors  = [];
+$success = false;
 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-    $errors  = [];
-    $success = false;
+$user_id = $_GET['id'];
+$user_found = false;
+  
+$stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
+if ($stmt->execute([$user_id])) {
+  $user = $stmt->fetch(PDO::FETCH_ASSOC);
+  
+  if ($user) {
+      $user_found = true;
+  }
+  
+}
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_user'])) {
 
     $username = trim($_REQUEST['username'] ?? '');
     $realname = trim($_REQUEST['realname'] ?? '');
@@ -103,16 +110,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($stmt->execute($params)) {
             $success = true;
-            echo "reached execute";
         } else {
             $errors[] = 'Failed to update user. Please try again.';
         }
+    }
+}
+
+$delete_success = false;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_POST['delete_user'])) {
+
+    $sql = "DELETE FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    
+    if ($stmt->execute([$user_id])) {
+        $delete_success = true;
+    } else {
+        $errors[] = "Could not delete user.";
     }
 }
 ?>
 
 <main class="admin-page">
   <div class="admin-container">
+    <?php if (!$user_found): ?>
+      <div class="alert error">
+        <p>User was not found. Either the user has been deleted or user ID is incorrect.</p>
+        <p><a href="<?= BASE_URL ?>/index.php?page=admin">To admin page</a></p>
+      </div>
+    <?php else: ?>
+
     <?php if (!empty($errors)): ?>
       <div class="alert error">
         <?php foreach ($errors as $error): ?>
@@ -125,6 +152,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="alert success">
         <p>Account updated successfully! 🥳</p>
         <p><a href="<?= BASE_URL ?>/index.php?page=user-admin&id=<?= $user_id ?>">Show updated user data</a></p>
+      </div>
+
+    <?php elseif ($delete_success): ?>
+      <div class="alert success">
+        <p>Account successfully deleted!</p>
+        <p><a href="<?= BASE_URL ?>/index.php?page=admin">To admin page</a></p>
       </div>
     <?php else: ?>
       <form action="<?= BASE_URL ?>/index.php?page=user-admin&id=<?= $user_id ?>" method="POST" class="form">
@@ -193,8 +226,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <input type="password" name="newpassrepeat" placeholder="Repeat the new password">
         </div>
 
-        <button type="submit" class="btn-register">Update user data</button>
+        <button type="submit" name="update_user" class="btn-register">Update user data</button>
       </form>
-    <?php endif; ?>
+    
   </div>
+
+  <div class="admin-container delete-user">
+    <form method="POST" action="">
+      <button class="btn-delete" type="submit" name="delete_user" onclick="return confirm('Are you sure you want to permanently delete this user? This action cannot be undone.');">
+          Delete User
+      </button>
+    </form>
+  </div>
+  <?php endif; ?>
+<?php endif; ?>
 </main>

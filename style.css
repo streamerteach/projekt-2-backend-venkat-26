@@ -543,6 +543,10 @@ Footer
   font-size: 14px;
 }
 
+.manage-card a {
+  text-decoration: none;
+}
+
 .manage-btn {
   display: inline-block;
   padding: 10px 18px;

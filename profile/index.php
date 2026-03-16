@@ -15,12 +15,12 @@
     <div class="manage-card">
         <h3>Update Profile</h3>
         <p>Edit your profile details and image.</p>
-         <button class="manage-btn">Update</button>
+         <a  href="index.php?page=profile-update"   class="manage-btn">Update</a>
     </div>
      <div class="manage-card danger">
         <h3>Remove Profile</h3>
         <p>Delete your profile and related data.</p>
-         <button class="manage-btn delete-btn">Remove</button>
+         <a href="index.php?page=delete-profile" class="manage-btn delete-btn">Remove</a>
     </div>
   </div>
   

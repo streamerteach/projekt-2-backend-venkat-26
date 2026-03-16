@@ -11,7 +11,7 @@ include 'secret.php';
 
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-print("Connected to database");
+// print("Connected to database");
 
 
 /*

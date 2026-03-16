@@ -43,11 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $sql = "INSERT INTO `users` (`username`, `realname`, `passhash`, `email`, `city`, `bio`, `gender_id_fk`, `role_id_fk`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO `users` (`username`, `realname`, `passhash`, `email`, `city`, `bio`, `gender_id_fk`, `role_id_fk`, `img_path`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $conn->prepare($sql);
-        if ($stmt->execute([$username, $realname, $hashed_password, $email, $city, $bio, $gender, '4'])) {
+        if ($stmt->execute([$username, $realname, $hashed_password, $email, $city, $bio, $gender, '4', 'images/default_user.jpg' //default image 
+        ])) {
             $success = true;
+        } else {
+            $errors[] = 'Failed to create user. Please try again';
         }
     }
     

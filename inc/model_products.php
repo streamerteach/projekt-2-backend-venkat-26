@@ -20,7 +20,6 @@ if (isset($_POST['sort'])) {
     }
 }
 
-// 3. Prepare the query with the dynamic (but safe) ORDER BY clause
 $stmt = $conn->prepare("SELECT * FROM listings ORDER BY $orderBy");
 $stmt->execute();
 

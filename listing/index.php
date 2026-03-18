@@ -33,8 +33,8 @@
       <div id= "listing-data">
         <h1><?php echo $listingData['name'] ?></h1>
 
-        <p id="listing-seller">Seller: <?php echo $listingData['listing_seller'] ?></p>
-
+        <p id="listing-seller">Seller: <?php echo $listingData['listing_seller']." (".$listingData['listing_seller_uname'].")" ?></p>
+        <h2 id="listing-price"><?php echo $listingData['price']."€"?></h2>
         <p id="listing-description"><?php echo $listingData['description'] ?>
                     <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis quam sed neque tristique, id tincidunt odio egestas. Cras pulvinar egestas tortor vel sagittis. Cras efficitur hendrerit ex id egestas. Sed ut dapibus velit, non posuere turpis. Nam dictum mollis ipsum, eu facilisis massa gravida in. Nunc vel molestie leo, in elementum tellus. Donec euismod consequat nibh, quis tempus tellus fermentum sit amet. Duis imperdiet erat nisl, non volutpat leo imperdiet sed. In justo est, accumsan eu porta eget, viverra et risus. Cras et lorem in diam fermentum elementum. Aenean at tincidunt justo, vitae porttitor urna. Nunc id pretium orci.
 
@@ -48,17 +48,21 @@
                 -->
           </p>
 
+          
+
         <div id="listing-interested">
           <p><?php echo $totalInterested ?> people in total have shown interest in this listing<?php if ($isInterested): ?> (including you)<?php endif; ?>.</p>
 
-          <form action="<?php echo BASE_URL ?>/index.php?page=listing&id=<?php echo $_GET['id']; ?>" method="POST">
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <form action="<?php echo BASE_URL ?>/index.php?page=listing&id=<?php echo $_GET['id']; ?>" method="POST">
 
-            <?php if ($isInterested): ?>
-                <button type="submit" name="action" value="not_interested">Mark me as not interested</button>
-            <?php else: ?>
-                <button type="submit" name="action" value="interested">Mark me as interested</button>
-            <?php endif; ?>
-          </form>
+              <?php if ($isInterested): ?>
+                  <button type="submit" name="action" value="not_interested">Mark me as not interested</button>
+              <?php else: ?>
+                  <button type="submit" name="action" value="interested">Mark me as interested</button>
+              <?php endif; ?>
+            </form>
+          <?php endif; ?>
         <div>
         <div class="listing-comments">
           <h2>Comments</h2>

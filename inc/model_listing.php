@@ -6,6 +6,7 @@
         SELECT 
             l.*, 
             u.realname AS listing_seller,
+            u.username AS listing_seller_uname,
             (SELECT 1 FROM users_interested WHERE user_id_fk = :user_id AND listing_id_fk = l.id) AS is_interested,
             (SELECT COUNT(*) FROM users_interested WHERE listing_id_fk = l.id) AS total_interested
         FROM listings l

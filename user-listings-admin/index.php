@@ -22,15 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_POST['delete_listing'])) {
   $listing_id = $_POST['delete_listing'];
 
   // Delete both the listing and all its comments
-  $sql = "
-    DELETE l, c 
-    FROM listings l
-    LEFT JOIN comments c ON c.listing_id_fk = l.id
-    WHERE l.id = ?
-  "; 
-  $stmt = $conn->prepare($sql);
-  
-  if ($stmt->execute([$listing_id])) {
+  $stmt1 = $conn->prepare("DELETE FROM comments WHERE listing_id_fk = ?");
+  if ($stmt1->execute([$listing_id])) {
+      $success = true;
+  } else {
+      $errors[] = "Could not delete listing comments.";
+  }
+
+  $stmt2 = $conn->prepare("DELETE FROM listings WHERE id = ?");
+  if ($stmt2->execute([$listing_id])) {
       $success = true;
   } else {
       $errors[] = "Could not delete listing.";

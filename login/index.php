@@ -52,13 +52,23 @@
     }
     // Check credentials using existing $conn
     if (empty($errors)) {
-       $stmt = $conn->prepare("SELECT id, username, passhash FROM users WHERE email = :email LIMIT 1");
-       $stmt->execute(['email' => $email]);
-       $user = $stmt->fetch(PDO::FETCH_ASSOC);
-       if ($user && password_verify($password, $user['passhash'])) {
+      $stmt = $conn->prepare("
+        SELECT 
+          u.id, 
+          u.username, 
+          u.passhash, 
+          r.role_level 
+        FROM users u
+        INNER JOIN roles r ON u.role_id_fk = r.id
+        WHERE u.email = :email 
+        LIMIT 1");
+      $stmt->execute(['email' => $email]);
+      $user = $stmt->fetch(PDO::FETCH_ASSOC);
+      if ($user && password_verify($password, $user['passhash'])) {
                   //Set session 
                     $_SESSION['user_id']  = $user['id']; 
                     $_SESSION['username'] = $user['username'];
+                    $_SESSION['role_level'] = $user['role_level'];
                     $success              = true;
 
                     //Redirect to target page

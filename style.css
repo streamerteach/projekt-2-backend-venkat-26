@@ -750,6 +750,10 @@ a.btn-blue:hover {
   padding: 10px;
   text-decoration: none;
   color: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #users-container a {
@@ -808,6 +812,10 @@ a.btn-blue:hover {
 }
 .alert.success a:hover{
   background-color: #16a34a;
+}
+
+.width-auto {
+  width:auto;
 }
 
 /* =========

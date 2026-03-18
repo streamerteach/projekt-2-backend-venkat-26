@@ -1,4 +1,9 @@
 <?php
+  if($_SESSION['role_level'] < 200) {
+    header("Location: " . BASE_URL . "/index.php?page=home");
+    exit;
+  }
+
   $stmt = $conn->prepare("SELECT * FROM users ORDER BY username ASC");
   $stmt->execute();
 

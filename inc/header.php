@@ -45,6 +45,15 @@
                     >Profile</a
                   >
                 </li>
+              <?php endif; ?>
+              <?php if (!empty($_SESSION['user_id'] and $_SESSION['role_level'] >= 200)) :?>
+                <li>
+                  <a
+                    href="<?php echo BASE_URL; ?>/index.php?page=admin"
+                    
+                    >Admin</a
+                  >
+                </li>
               <?php endif; ?>              
               <li>
                 <a

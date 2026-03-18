@@ -1,4 +1,9 @@
 <?php
+if($_SESSION['role_level'] < 200) {
+  header("Location: " . BASE_URL . "/index.php?page=home");
+  exit;
+}
+
 include __DIR__ . "/../inc/model_genders.php";
 include __DIR__ . "/../inc/model_roles.php";
 
@@ -137,6 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_POST['delete_user'])) {
     <p><a class="btn-blue" href="<?= BASE_URL ?>/index.php?page=user-listings-admin&id=<?= $user_id ?>">View user listings</a></p>
   </div>
 
+<?php if ($_SESSION['role_level'] >= 300): ?>
   <div class="admin-container">
     <?php if (!$user_found): ?>
       <div class="alert error">
@@ -243,6 +249,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_POST['delete_user'])) {
       </button>
     </form>
   </div>
+    <?php endif; ?>
   <?php endif; ?>
 <?php endif; ?>
 </main>

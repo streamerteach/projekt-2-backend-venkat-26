@@ -43,11 +43,13 @@ While the current implementation fulfills the basic requirements, a more advance
   <article class="intro">
   <h1>Reflektiv rapport: Erik</h1>
   
-  <p>Jag är bekant med PHP från tidigare, så jag hade inga större svårigheter med att förstå mina delar. Jag fick i alla fall bekanta mig med vissa nya PHP-funktioner som jag inte hade behövt använda innan (t.ex. "mail()"-funktionen), så det blev i alla fall inte tråkigt eller ointressant för mig.</p> <br>
-  
-  <p>I och med att det angivna målet i projekt 1 inte var att ännu få ihop en funktionellt komplett webbsida ledde till att jag personligen var omotiverad att arbeta hårt på projektet, eftersom det som jag anser vara roligast – att få se det fullständiga pusslet läggas färdigt, så att säga – kommer först i projekt 2. Jag lade själv inte mycket fokus på det visuella. Jag inser att jag kunde ha varit mer aktiv och tagit initiativet att kommunicera mer med mitt projektpar, vilket jag lovar att göra för projekt 2.</p><br>
+  <p>Jag var ansvarig för delarna i svart.</p><br>
 
-  <p>Eftersom den här delen av kursen var mer inriktad på grunderna i PHP så tror jag att jag personligen inte ännu kände mig lika utmanad som jag ville med mina nuvarande erfarenheter i språket. Jag kunde visst ha gett mig själv större utmaningar inom projekts ramar, vilket förstås var tillåtet, men det gjorde jag inte vilket var mitt eget fel.</p>
+  <p>Jag tyckte att projekt 2 var roligt att arbeta med. Jag hade inga större svårigheter med mina delar, bara att jag nu och då fick bekanta mig närmare med att fixa konflikter i git. Jag har använt PHP med databaser tidigare, vilket var till stor hjälp.</p> <br>
+  
+  <p>Det skulle igen ha varit till fördel för mig om jag hade börjat arbeta tidigare lite tidiage på projektet än vad jag gjorde, men jag lyckades i alla fall börja lite tidigare än vad jag gjorde i projekt 1, vilket jag är tacksam för.</p><br>
+
+  <p>Även om jag var bekant med ämnen i projektet från tidigare så var det väldigt roligt att få öva på dem igen. Jag önskar att jag skulle ha gett mig själv mer tid för att hinna finslipa, men jag är nöjd med vad jag lyckades producera.</p>
   </ul>
   
   </article>

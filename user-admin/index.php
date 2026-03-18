@@ -132,6 +132,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_POST['delete_user'])) {
 ?>
 
 <main class="admin-page">
+
+  <div class="admin-container">
+    <p><a class="btn-blue" href="<?= BASE_URL ?>/index.php?page=user-listings-admin&id=<?= $user_id ?>">View user listings</a></p>
+  </div>
+
   <div class="admin-container">
     <?php if (!$user_found): ?>
       <div class="alert error">

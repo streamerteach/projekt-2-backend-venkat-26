@@ -92,7 +92,7 @@
 <main class="login-page">
   <div class="login-container">
     <?php if (!empty($_SESSION['user_id'])): ?>
-      <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username'] ?? '') ?> 👋</h2>
+      <h2>Do you want to log out, "<?php echo htmlspecialchars($_SESSION['username'] ?? '') ?>"?</h2>
       <a href="<?php echo BASE_URL ?>/index.php?page=login&action=logout" class="btn-logout" onclick="return confirm('Are you sure you want to log out?');">Logout</a>
     <?php else: ?>
       <h2>Login to ReUse Market</h2>

@@ -22,7 +22,19 @@ if(!isset($cookieConsent) || $cookieConsent !== 'rejected'){
   setcookie('last_visit', $currentVisit, time() + (10*365*25*60*60), "/");
 }
 ?>
- <div class="page-section user-info">
+<!-- Intro Section -->
+ <div class="page-section intro-section">
+<article class="intro">
+ <h1>Welcome to the ReUse Market</h1>
+  <!-- /* <p>Välkommen till vår second hand-butik</p> */ -->
+ <ul>
+  <li>Buy & sell second-hand items easily</li>
+  <li>Save money and planet 🌱🌱 </li>
+</ul>
+ </article>
+</div> 
+
+<div class="page-section user-info">
       <?php if($cookie_message): ?>
       <p><?php echo $cookie_message; ?> </p>
       <?php endif; ?>
@@ -53,17 +65,7 @@ if(!isset($cookieConsent) || $cookieConsent !== 'rejected'){
     <?php endif; ?>
     </div>
 
-<!-- Intro Section -->
- <div class="page-section intro-section">
-<article class="intro">
- <h1>Welcome to the ReUse Market</h1>
-  <!-- /* <p>Välkommen till vår second hand-butik</p> */ -->
- <ul>
-  <li>Buy & sell second-hand items easily</li>
-  <li>Save money and planet 🌱🌱 </li>
-</ul>
- </article>
-</div>
+
 
  <!-- Cookie / Extra message -->
 <div class="page-section message-section">
@@ -78,11 +80,11 @@ if(!isset($cookieConsent) || $cookieConsent !== 'rejected'){
         echo 'Today is ' . date('l') . ' the ' . date('j F') . ', week ' . (int)date('W');
       ?></p>
 
-      <h2>Create time-limited listing:</h2><br>
+      <h2>Timer:</h2><br>
       <form method="POST" action="<?php echo BASE_URL;?>/index.php?page=home">
         <?php $now = date('Y-m-d\TH:i'); ?>
         <input type="datetime-local" name="delisting_date" min="<?php echo $now; ?>" required>
-        <button type="submit">Create time-limited listing</button><br><br>
+        <button type="submit">Start timer</button><br><br>
       </form>
       <p id="countdown"></p>
     </article>

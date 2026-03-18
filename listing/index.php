@@ -48,18 +48,22 @@
                 -->
           </p>
 
+          
+
         <div id="listing-interested">
           <p><?php echo $totalInterested ?> people in total have shown interest in this listing<?php if ($isInterested): ?> (including you)<?php endif; ?>.</p>
 
-          <form action="<?php echo BASE_URL ?>/index.php?page=listing&id=<?php echo $_GET['id']; ?>" method="POST">
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <form action="<?php echo BASE_URL ?>/index.php?page=listing&id=<?php echo $_GET['id']; ?>" method="POST">
 
-            <?php if ($isInterested): ?>
-                <button type="submit" name="action" value="not_interested">Mark me as not interested</button>
-            <?php else: ?>
-                <button type="submit" name="action" value="interested">Mark me as interested</button>
-            <?php endif; ?>
-          </form>
-        </div>
+              <?php if ($isInterested): ?>
+                  <button type="submit" name="action" value="not_interested">Mark me as not interested</button>
+              <?php else: ?>
+                  <button type="submit" name="action" value="interested">Mark me as interested</button>
+              <?php endif; ?>
+            </form>
+          <?php endif; ?>
+        <div>
         <div class="listing-comments">
           <h2>Comments</h2>
 

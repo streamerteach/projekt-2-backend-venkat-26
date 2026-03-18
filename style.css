@@ -575,10 +575,14 @@ article.listing #listing-data h1 {
 }
 
 article.listing #listing-data p#listing-seller {
-  margin-bottom: 30px;
   font-weight: bold;
   font-style: italic;
     color: #4b5563;
+}
+
+article.listing #listing-data #listing-price {
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 article.listing #listing-data p#listing-description {

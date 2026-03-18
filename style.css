@@ -742,7 +742,7 @@ a.btn-blue {
   border-radius: 8px;
   font-weight: bold;
   background-color: #2c5dff;
-  color: #fff;
+  color: #fff !important;
   transition: background-color 0.2s ease;
 }
 

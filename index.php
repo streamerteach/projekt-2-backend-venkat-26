@@ -25,7 +25,8 @@ $routes = [
   'listing' => 'listing/index.php',
   'admin' => 'admin/index.php',
   'user-admin' => 'user-admin/index.php',
-  'user-listings-admin' => 'user-listings-admin/index.php'
+  'user-listings-admin' => 'user-listings-admin/index.php',
+  'listing-comments-admin' => 'listing-comments-admin/index.php'
 ];
 
 $file = $routes[$page] ?? $routes['home'];

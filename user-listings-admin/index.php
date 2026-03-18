@@ -65,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_POST['delete_listing'])) {
             <p>
               <?= $listing['name'] ?>
             </p>
+            <a class="btn-blue" href="<?= BASE_URL ?>/index.php?page=listing-comments-admin&id=<?= $listing['id'] ?>">Comments</a>
             <form method="POST" action="">
               <button class="btn-delete width-auto" type="submit" name="delete_listing" value="<?=$listing['id']?>" onclick="return confirm('Are you sure you want to permanently delete this listing? This action cannot be undone.');">
                   Delete

@@ -1,16 +1,40 @@
 <?php
+   require_once __DIR__ . '/../inc/config.php';
     include 'profile_img_logic.php';
     include 'comment_logic.php';
+    
 
     /*if(empty($_SESSION['username'])) {
         header("Location: ./index.php?page=home/");
     }*/
+  //
+  $receivedComments = [] ;
+  if(!empty($_SESSION['user_id'])) {
+    $stmt = $conn->prepare("
+     SELECT 
+      c.content,
+      c.date,
+      c.listing_id_fk,
+      l.name AS listing_name,
+      u.username AS sender_name
+    FROM comments c
+    INNER JOIN listings l ON c.listing_id_fk = l.id
+    INNER JOIN users u ON c.user_id_fk = u.id  
+    WHERE l.user_id_fk = :user_id
+    ORDER BY c.id DESC
+    ");
 
+    $stmt->execute([
+        ':user_id' => $_SESSION['user_id']
+    ]);
+    $receivedComments = $stmt->fetchAll(PDO:: FETCH_ASSOC);
+  }
 ?>
 
  <main class="">
   <div class="page-section">
   <h1>Profile Page</h1><br>
+  <h2 class="profile-welcome"> Welcome, <?= htmlspecialchars($username) ?> 👋</h2> <br>
   <div class="profileManage">
     <div class="manage-card">
         <h3>Update Profile</h3>
@@ -89,6 +113,28 @@
         echo "<p>Comment file not found.</p>";
     }
     ?>
+</div>
+
+<div class="page-section">
+ <h2>Comments on Your Listings</h2>
+  <?php if(!empty($receivedComments)):?>
+    <?php foreach($receivedComments as $comment) : ?>
+        <div class="comment-card">
+            <p>
+                <strong><?= htmlspecialchars($comment['sender_name']) ?></strong>
+                commented on 
+                <a href="index.php?page=listing&id=<?= (int)$comment['listing_id_fk'] ?>">
+                    <?= htmlspecialchars($comment['listing_name']) ?>
+                </a>
+            </p>
+
+            <p><?= htmlspecialchars($comment['content']) ?></p>
+            <small><?= htmlspecialchars($comment['date']) ?></small>
+        </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>No comments on your listings yet.</p>
+    <?php endif ;?>
 </div>
  
  </main>

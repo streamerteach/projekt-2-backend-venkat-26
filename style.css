@@ -550,56 +550,177 @@ LISTING PAGE
 article.listing {
   display: flex;
   column-gap: 15px;  
+  align-items: flex-start;
+  gap: 28px;
 }
 
 article.listing img#listing-img {
   width: 500px;
   max-width: 100%;
   object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 article.listing #listing-data {
+  flex: 1;
   margin-bottom: 5px;
   display: flex;
   flex-direction: column;
 }
 
 article.listing #listing-data h1 {
-  margin-bottom: 5px;
-  flex: 0 1 auto;
+  margin-bottom: 8px;
+  color: #111827;
 }
 
 article.listing #listing-data p#listing-seller {
   margin-bottom: 30px;
   font-weight: bold;
   font-style: italic;
-  flex: 0 1 auto;
+    color: #4b5563;
 }
 
 article.listing #listing-data p#listing-description {
-  margin-bottom: 60px;
-  flex: 0 1 auto;
+  margin-bottom: 24px;
+  line-height: 1.6;
+  color: #374151;
 }
 
 article.listing #listing-data #listing-interested {
   height: auto;
   display: flex;
-  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  /* flex: 1 1 auto; */
 }
 
 article.listing #listing-data #listing-interested p {
+  margin: 0;
   padding-right: 5px;
+  color: #374151;
 }
 
 article.listing #listing-data #listing-interested form {
   padding-right: 5px;
+  margin: 0;
 }
 
-article.listing #listing-data #listing-interested p, article.listing #listing-data #listing-interested form {
+article.listing #listing-data #listing-interested button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #22c55e;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+article.listing #listing-data #listing-interested button:hover{
+  background: #16a34a;
+}
+/* article.listing #listing-data #listing-interested p, article.listing #listing-data #listing-interested form {
   margin-top: auto;
+} */
+
+/* Comments section */
+
+.listing-comments {
+  margin-top:  30px;
+  padding: 18px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+.listing-comments h2 {
+  margin-bottom: 14px;
+  font-size: 22px;
+  color: #111827;
+}
 
+/* comment form */
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.comment-form textarea{
+  width: 100%;
+  min-height: 90px;
+  max-height: 160px;
+  max-width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 14px;
+  resize: vertical;
+line-height: 1.5;
+}
+.comment-form textarea:focus{
+  outline: none;
+  border-color: #22c55e;
+}
+.comment-form button{
+  align-self: flex-start;
+ padding: 10px 16px;
+ border: none;
+ border-radius: 8px ;
+ background: #22c55e;
+ color: white;
+ cursor: pointer;
+ transition: background 0.2s ease;
+}
+
+.comment-form button:hover {
+  background: #005fa3 ;
+} 
+
+/* Empty state */
+.no-comments {
+  padding: 12px 14px;
+  background: #f9fafb;
+  border: 1px dashed #d1d5db;
+  border-radius: 10px;
+  color: #6b7290;
+}
+/* Individual comments */
+.comment-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 14px ;
+  margin-top: 14px;
+  margin-bottom: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.comment-card p {
+  margin-bottom: 6px;
+}
+
+.comment-card small {
+  color: #666;
+}
+
+/* Mobile*/
+@media (max-width: 900px){
+  article.listing {
+    flex-direction: column;
+  }
+  article.listing img#listing-img{
+    width: 100%;
+    max-width: 100%;
+  }
+}
 /* =========
 ADMIN PAGE
 ================ */
@@ -740,6 +861,15 @@ Footer
   margin: 20px 0;
 }
 
+.profile-welcome{
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #16a34a;
+  border-left: 4px solid #22c55e;
+  padding-left: 10px;
+}
+
 .manage-card {
   flex: 1 1 250px;
   background: #fff;
@@ -777,7 +907,7 @@ Footer
   padding: 10px 18px;
   border: none;
   border-radius: 8px;
-  background: #0077cc;
+  background: #22c55e;
   color: white;
   font-size: 14px;
   cursor: pointer;
@@ -786,7 +916,7 @@ Footer
 }
 
 .manage-btn:hover{
-  background: #005fa3;
+  background: #16a34a;
 }
 
 .delete-btn{

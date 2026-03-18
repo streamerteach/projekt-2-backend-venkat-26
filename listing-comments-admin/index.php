@@ -9,7 +9,14 @@ $user_found = false;
 $errors  = [];
 $success = false;
   
-$stmt = $conn->prepare("SELECT * FROM comments WHERE listing_id_fk = ?");
+$stmt = $conn->prepare("
+    SELECT 
+        c.*, 
+        u.username 
+    FROM comments c
+    JOIN users u ON c.user_id_fk = u.id
+    WHERE c.listing_id_fk = ?
+");
 if ($stmt->execute([$listing_id])) {
   $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
   
@@ -54,9 +61,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_POST['delete_comment'])) {
       <?php foreach ($comments as $comment): ?>
         <a href="<?= BASE_URL ?>/index.php?page=listing&id=<?= $_GET['id'] ?>">
           <div class="user-field flex-row">
-            <p>
-              <?= $comment['content'] ?>
-            </p>
+            <div>
+              <b><p>
+                <?= $comment['username'] ?>
+              </p></b>
+              <p>
+                <?= $comment['content'] ?>
+              </p>
+            </div>
             <form method="POST" action="">
               <button class="btn-delete width-auto" type="submit" name="delete_comment" value="<?=$comment['id']?>" onclick="return confirm('Are you sure you want to permanently delete this comment? This action cannot be undone.');">
                   Delete

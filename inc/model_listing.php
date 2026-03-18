@@ -26,7 +26,7 @@
 /* Handle interested / not intersted / comments */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $listing_id = $_GET['id'];
-    $action = $_POST['action'];
+    $action = $_POST['action'] ?? null;
     $user_id = $_SESSION['user_id'];
 
     //Interested buttons

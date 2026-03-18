@@ -33,9 +33,9 @@
       <div id= "listing-data">
         <h1><?php echo $listingData['name'] ?></h1>
 
-        <p id="listing-seller">Seller: <?php echo $listingData['listing_seller'] ?></p>
+        <p id="listing-seller">Seller: <?php echo htmlspecialchars($listingData['listing_seller']); ?></p>
 
-        <p id="listing-description"><?php echo $listingData['description'] ?>
+        <p id="listing-description"><?php echo htmlspecialchars($listingData['description']); ?>
                     <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis quam sed neque tristique, id tincidunt odio egestas. Cras pulvinar egestas tortor vel sagittis. Cras efficitur hendrerit ex id egestas. Sed ut dapibus velit, non posuere turpis. Nam dictum mollis ipsum, eu facilisis massa gravida in. Nunc vel molestie leo, in elementum tellus. Donec euismod consequat nibh, quis tempus tellus fermentum sit amet. Duis imperdiet erat nisl, non volutpat leo imperdiet sed. In justo est, accumsan eu porta eget, viverra et risus. Cras et lorem in diam fermentum elementum. Aenean at tincidunt justo, vitae porttitor urna. Nunc id pretium orci.
 
             Maecenas iaculis nunc non elit auctor, et sodales erat iaculis. Phasellus nec lectus iaculis risus efficitur porttitor nec dictum massa. Aliquam consectetur massa vitae tempor rutrum. Fusce id mattis risus. Mauris semper felis sapien, vel laoreet leo aliquet at. Quisque aliquet venenatis luctus. Nam condimentum varius malesuada. Quisque in quam vel mauris lacinia tempor. Nunc viverra ultrices risus. Praesent eu scelerisque sapien. Etiam et ultricies purus, eget mollis ipsum. Sed nec finibus nibh. Mauris ultricies metus quis odio convallis fermentum. Phasellus nec enim nec turpis dictum lobortis tincidunt in orci. Aenean semper malesuada fringilla.
@@ -59,7 +59,7 @@
                 <button type="submit" name="action" value="interested">Mark me as interested</button>
             <?php endif; ?>
           </form>
-        <div>
+        </div>
         <div class="listing-comments">
           <h2>Comments</h2>
 

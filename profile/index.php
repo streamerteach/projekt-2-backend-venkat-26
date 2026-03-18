@@ -34,7 +34,7 @@
  <main class="">
   <div class="page-section">
   <h1>Profile Page</h1><br>
-  <h2 class="profile-welcome"> Welcome, <?= htmlspecialchars($username) ?> 👋</h2> <br>
+  <h2 class="profile-welcome"> Welcome, <?= htmlspecialchars($_SESSION['username'] ?? 'User') ?> 👋</h2> <br>
   <div class="profileManage">
     <div class="manage-card">
         <h3>Update Profile</h3>
